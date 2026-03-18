@@ -1,0 +1,11 @@
+models:
+- name: dim_customers
+  description: This model provides a detailed view of customers, including their unique
+    identifiers and names, to support customer-related analytics and reporting.
+  columns:
+  - name: customer_id
+    description: A unique identifier for each customer.
+  - name: first_name
+    description: The first name of the customer.
+  - name: last_name
+    description: The last name of the customer.
