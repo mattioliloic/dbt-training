@@ -35,6 +35,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
+tests: 
+  leah_snowflake_jaffle_shop:
+     +store_failures: true
+
 models:
   jaffle_shop:
     staging:
@@ -44,3 +48,13 @@ models:
       +materialized: table
     snowflake_spend:
       +enabled: true 
+
+  leah_snowflake_jaffle_shop:
+    staging:
+      +materialized: view 
+    marts:
+      +materialized: table 
+
+vars:
+  required_tests:
+    "+unique.*|not_null|dbt_utils.cardinality_equality": 2

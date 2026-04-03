@@ -1,11 +1,23 @@
 packages:
+- package: dbt-labs/audit_helper
+  name: audit_helper
+  version: 0.13.0
 - git: https://github.com/dbt-labs/dbt-codegen.git
   name: codegen
   revision: c4d495b8bb27a1448146dd7c928c56d95003c6f0
+- package: godatadriven/dbt_date
+  name: dbt_date
+  version: 0.17.2
+- package: metaplane/dbt_expectations
+  name: dbt_expectations
+  version: 0.10.10
+- package: tnightengale/dbt_meta_testing
+  name: dbt_meta_testing
+  version: 0.3.6
 - package: dbt-labs/dbt_utils
   name: dbt_utils
   version: 1.3.3
 - package: gitlabhq/snowflake_spend
   name: snowflake_spend
   version: 1.4.0
-sha1_hash: 28e3833d321f0d8634f46b14a03cdab20be636d5
+sha1_hash: 68efcfd04e24f941b20a45f556f778d5f7591178

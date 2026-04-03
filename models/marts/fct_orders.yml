@@ -1,0 +1,47 @@
+models:
+- name: fct_orders
+  description: This model provides informations about the orders that have been successfull 
+  config: 
+    contract: 
+      enforced: true
+
+  columns:
+  - name: order_id
+    description: The identifier for the order associated with the payment.
+    data_type: number    
+    constraints:
+      - type: not_null
+
+  - name: customer_id
+    description: The identifier for the customer associated with the order.
+    data_type: number 
+
+  - name: order_date
+    description: The date the order has been confirmed.
+      transfer.
+    data_type: date 
+
+  - name: amount
+    data_tests:
+          - average_dollars_spent_greater_than_one:
+              arguments:
+                group_by_column: customer_id
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              arguments:
+                min_value: 0 # (Optional)
+                max_value: 100 # (Optional)
+                strictly: false # (Optional. Default is 'false'. Adds an 'or equal to' to the comparison operator for min/max)
+          - dbt_utils.expression_is_true:
+              arguments: 
+                expression: "<= 5"
+                config:
+                  #error_if: ">= 60000"
+                  #where: "order_date = current_date"
+                  limit: 5
+                  #store_failures: true
+    description: The total amount of the payment transaction.
+    data_type: number 
+
+  - name: amount
+    data_type: number
+  

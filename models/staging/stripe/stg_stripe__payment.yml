@@ -17,5 +17,10 @@ models:
       pending, or failed.
   - name: amount
     description: The total amount of the payment transaction.
+    tests:
+    - dbt_expectations.expect_table_column_count_to_be_between:
+        arguments:
+          min_value: 1 # (Optional)
+          stricly: false
   - name: created_at
     description: The date when the payment was created.
